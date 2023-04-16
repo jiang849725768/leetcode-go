@@ -12,6 +12,7 @@ type TreeNode struct {
 }
 
 // CreateTree create a tree with int ptr slice
+// value -1 is used to represent null
 func CreateTree(nums []int) *TreeNode {
 	if len(nums) == 0 {
 		return nil
