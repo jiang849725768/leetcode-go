@@ -1,7 +1,7 @@
 package answer
 
 import (
-	. "leetcode/structures"
+	. "leetcode/utils"
 )
 
 func reverseBetween(head *ListNode, left int, right int) *ListNode {

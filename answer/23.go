@@ -1,10 +1,10 @@
 package answer
 
 import (
-	"leetcode/structures"
+	"leetcode/utils"
 )
 
-func mergeKLists(lists []*structures.ListNode) *structures.ListNode {
+func mergeKLists(lists []*utils.ListNode) *utils.ListNode {
 	if len(lists) == 0 {
 		return nil
 	}
@@ -19,11 +19,11 @@ func mergeKLists(lists []*structures.ListNode) *structures.ListNode {
 }
 
 func (sol *Solution) Title23() {
-	lists := []*structures.ListNode{
-		structures.CreateList([]int{1, 4, 5}),
-		structures.CreateList([]int{1, 3, 4}),
-		structures.CreateList([]int{2, 6}),
+	lists := []*utils.ListNode{
+		utils.CreateList([]int{1, 4, 5}),
+		utils.CreateList([]int{1, 3, 4}),
+		utils.CreateList([]int{2, 6}),
 	}
 	head := mergeKLists(lists)
-	structures.PrintList(head)
+	utils.PrintList(head)
 }

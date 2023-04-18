@@ -1,7 +1,7 @@
 package answer
 
 import (
-	. "leetcode/structures"
+	. "leetcode/utils"
 )
 
 func reverseKGroup(head *ListNode, k int) *ListNode {

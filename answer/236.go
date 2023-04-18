@@ -1,7 +1,7 @@
 package answer
 
 import (
-	. "leetcode/structures"
+	. "leetcode/utils"
 )
 
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {

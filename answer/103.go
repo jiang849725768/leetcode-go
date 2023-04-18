@@ -2,7 +2,8 @@ package answer
 
 import (
 	"fmt"
-	. "leetcode/structures"
+
+	. "leetcode/utils"
 )
 
 func zigzagLevelOrder(root *TreeNode) [][]int {

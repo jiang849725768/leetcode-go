@@ -1,7 +1,7 @@
 package answer
 
 import (
-	. "leetcode/structures"
+	. "leetcode/utils"
 )
 
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
