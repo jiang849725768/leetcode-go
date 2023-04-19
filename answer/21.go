@@ -1,11 +1,11 @@
 package answer
 
 import (
-	"leetcode/utils"
+	. "leetcode/utils"
 )
 
-func mergeTwoLists(list1 *utils.ListNode, list2 *utils.ListNode) *utils.ListNode {
-	fakeHead := &utils.ListNode{
+func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+	fakeHead := &ListNode{
 		Next: nil,
 	}
 	tmp := fakeHead
