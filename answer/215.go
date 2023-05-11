@@ -4,36 +4,37 @@ import (
 	"fmt"
 )
 
-// QuickSort
 func findKthLargest(nums []int, k int) int {
-	var TopK func(left, right int)
-	TopK = func(left, right int) {
-		if left >= right {
+	var qsort func(left, right int)
+	qsort = func(left, right int) {
+		start, end := left, right
+		if start >= end {
 			return
 		}
-		bg, ed := left, right
-		for left < right {
-			for nums[right] > nums[bg] && left < right {
-				right--
+		for start < end {
+			for start < end && nums[start] < nums[end] {
+				end--
 			}
-			for nums[left] <= nums[bg] && left < right {
-				left++
+			if start < end {
+				nums[start], nums[end] = nums[end], nums[start]
+				start++
 			}
-			nums[left], nums[right] = nums[right], nums[left]
+			for start < end && nums[start] < nums[end] {
+				start++
+			}
+			if start < end {
+				nums[start], nums[end] = nums[end], nums[start]
+				end--
+			}
 		}
-		nums[bg], nums[left] = nums[left], nums[bg]
-		switch {
-		case right == len(nums)-k:
-			return
-		case right < len(nums)-k:
-			TopK(right+1, ed)
-		case right > len(nums)-k:
-			TopK(bg, left-1)
-		default:
-			panic("Impossible")
+		if start > len(nums)-k {
+			qsort(left, start-1)
+		} else if start < len(nums)-k {
+			qsort(end+1, right)
 		}
 	}
-	TopK(0, len(nums)-1)
+	qsort(0, len(nums)-1)
+
 	return nums[len(nums)-k]
 }
 

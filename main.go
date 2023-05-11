@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	var titleNum int
-	if _, err := fmt.Scanf("%d", &titleNum); err != nil {
-		fmt.Println("Title num must be a integer")
+	var titleNum string
+	if _, err := fmt.Scanf("%s", &titleNum); err != nil {
+		panic("Title num must be a string")
 	}
-	titleName := fmt.Sprintf("Title%d", titleNum)
+	titleName := fmt.Sprintf("Title%s", titleNum)
 
 	sol := answer.New()
 	// 获取包函数反射值
