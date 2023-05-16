@@ -3,6 +3,6 @@ package answer
 type Solution struct {
 }
 
-func New() *Solution {
+func NewSolution() *Solution {
 	return &Solution{}
 }

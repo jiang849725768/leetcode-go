@@ -1,6 +1,8 @@
 package answer
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func numIslands(grid [][]byte) int {
 	res := 0

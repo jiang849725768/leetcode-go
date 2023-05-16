@@ -14,7 +14,7 @@ func main() {
 	}
 	titleName := fmt.Sprintf("Title%s", titleNum)
 
-	sol := answer.New()
+	sol := answer.NewSolution()
 	// 获取包函数反射值
 	pkg := reflect.ValueOf(sol)
 	function := pkg.MethodByName(titleName)
