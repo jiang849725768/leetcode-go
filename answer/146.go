@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-// LRUNode form a two-way linked list
+// LRUNode 为双向链表节点,同时存储一个键值对
 type LRUNode struct {
 	key   int
 	value int
@@ -14,15 +14,17 @@ type LRUNode struct {
 	next  *LRUNode
 }
 
+// LRUCache 为LRU缓存结构, 用双向链表和一个hashmap实现
 type LRUCache struct {
-	use  int
-	cpy  int
+	use  int              // 已使用的空间
+	cpy  int              // 总容量
 	lmap map[int]*LRUNode // map of LRUNode ptr
 	head *LRUNode
 	tail *LRUNode
 }
 
-func Constructor(capacity int) LRUCache {
+// LRUConstructor 构造LRU缓存
+func LRUConstructor(capacity int) LRUCache {
 	return LRUCache{
 		0,
 		capacity,
@@ -32,6 +34,7 @@ func Constructor(capacity int) LRUCache {
 	}
 }
 
+// freshNode 将节点移动到链表头部
 func (this *LRUCache) freshNode(key int) {
 	if node, ok := this.lmap[key]; ok {
 		if node == this.head {
@@ -51,6 +54,7 @@ func (this *LRUCache) freshNode(key int) {
 	}
 }
 
+// Get 获取key对应的value, 如果不存在则返回-1
 func (this *LRUCache) Get(key int) int {
 	if node, ok := this.lmap[key]; ok {
 		this.freshNode(key)
@@ -60,14 +64,14 @@ func (this *LRUCache) Get(key int) int {
 }
 
 func (this *LRUCache) Put(key int, value int) {
-	// key existed
+	// 指定的key存在，仅更新key
 	if node, ok := this.lmap[key]; ok {
 		node.value = value
 		this.freshNode(key)
 		return
 	}
 
-	// add new key-value
+	// 添加一个新的键值对
 	newNode := &LRUNode{
 		key,
 		value,
@@ -76,6 +80,7 @@ func (this *LRUCache) Put(key int, value int) {
 	}
 	this.lmap[key] = newNode
 
+	// 缓存为空
 	if this.use == 0 {
 		this.head, this.tail = newNode, newNode
 		this.use++
@@ -85,6 +90,7 @@ func (this *LRUCache) Put(key int, value int) {
 		this.use++
 	}
 
+	// 缓存已满，删除尾部节点
 	for this.use > this.cpy {
 		tailKey := this.tail.key
 		this.tail.prev.next = nil
@@ -96,7 +102,7 @@ func (this *LRUCache) Put(key int, value int) {
 
 func (sol *Solution) Title146() {
 
-	obj := Constructor(1)
+	obj := LRUConstructor(1)
 	obj.Put(1, 1)
 	obj.Put(2, 2)
 	fmt.Println(obj.Get(1))
