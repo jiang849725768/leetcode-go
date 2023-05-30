@@ -16,9 +16,9 @@ func (h Heap) compare(i, j int) bool {
 	// return h[i] > h[j]
 }
 
-// 结点i的左子结点为2i+1,右子结点为2i+2
-// 结点i的父节点为(i-1)/2
-// move the node up
+// 节点i的左子结点为2i+1,右子结点为2i+2
+// 节点i的父节点为(i-1)/2
+// 将节点i向上移动
 func (h Heap) up(i int) {
 	for i > 0 {
 		parent := (i - 1) / 2
@@ -31,7 +31,7 @@ func (h Heap) up(i int) {
 	}
 }
 
-// move the node down
+// 将节点i向下移动
 func (h Heap) down(i int) {
 	for i < len(h) {
 		left := 2*i + 1
@@ -63,12 +63,14 @@ func (h Heap) down(i int) {
 	}
 }
 
+// PushHeap 向堆中插入元素
 func PushHeap(x int, h Heap) Heap {
 	h = append(h, x)
 	h.up(len(h) - 1)
 	return h
 }
 
+// PopHeap 弹出堆顶元素
 func PopHeap(h Heap) (Heap, int) {
 	tail := len(h) - 1
 	top := h[0]

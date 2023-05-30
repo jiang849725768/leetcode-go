@@ -29,6 +29,8 @@ func isValid(s string) bool {
 				return false
 			}
 			stack = stack[:len(stack)-1]
+		default:
+			return false
 		}
 	}
 
