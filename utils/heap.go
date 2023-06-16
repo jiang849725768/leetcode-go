@@ -5,6 +5,15 @@ package utils
 // Heap is the smallest heap data strcture
 type Heap []int
 
+// NewHeap create a new heap
+func NewHeap(ls []int) Heap {
+	var h []int
+	for _, v := range ls {
+		h = PushHeap(v, h)
+	}
+	return h
+}
+
 func (h Heap) swap(i, j int) {
 	h[i], h[j] = h[j], h[i]
 }

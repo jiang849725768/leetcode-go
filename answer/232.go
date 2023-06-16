@@ -1,5 +1,9 @@
 package answer
 
+import (
+	"fmt"
+)
+
 type MyQueue struct {
 	instack  []int
 	outstack []int
@@ -41,4 +45,16 @@ func (this *MyQueue) Peek() int {
 
 func (this *MyQueue) Empty() bool {
 	return len(this.instack) == 0 && len(this.outstack) == 0
+}
+
+func (sol *Solution) Title232() {
+	obj := MyQueueConstructor()
+	obj.Push(1)
+	obj.Push(2)
+	obj.Push(3)
+	obj.Push(4)
+	obj.Push(5)
+	fmt.Println(obj.Peek())
+	fmt.Println(obj.Pop())
+	fmt.Println(obj.Peek())
 }

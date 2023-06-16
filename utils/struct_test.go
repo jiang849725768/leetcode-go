@@ -22,3 +22,10 @@ func TestQuickSort(t *testing.T) {
 	QuickSort(ls)
 	fmt.Println(ls)
 }
+
+func TestHeap(t *testing.T) {
+	ls := []int{3, 2, 1, 5, 4}
+	heap := NewHeap(ls)
+	fmt.Println(heap)
+	fmt.Println(PopHeap(heap))
+}

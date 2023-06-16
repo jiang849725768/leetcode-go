@@ -1,5 +1,9 @@
 package answer
 
+import (
+	"fmt"
+)
+
 type MyStack struct {
 	oneList []int
 	slen    int
@@ -38,4 +42,13 @@ func (this *MyStack) Top() int {
 
 func (this *MyStack) Empty() bool {
 	return this.slen == 0
+}
+
+func (sol *Solution) Title225() {
+	obj := MyStackConstructor()
+	obj.Push(1)
+	obj.Push(2)
+	fmt.Println(obj.Top())
+	fmt.Println(obj.Pop())
+	fmt.Println(obj.Empty())
 }
